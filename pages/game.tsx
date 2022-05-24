@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import useInterval from "../hooks/useInterval";
+import { useAppContext } from "../contexts";
 
 // TODO: move from here to api response
 const testString = "AHGFGAHGFGAHGFG";
@@ -13,6 +14,8 @@ const Game: NextPage = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [correctTally, setCorrectTally] = useState(0);
   const [incorrectTally, setIncorrectTally] = useState(0);
+
+  const { username } = useAppContext();
 
   const router = useRouter();
 
@@ -56,7 +59,7 @@ const Game: NextPage = () => {
       </Head>
 
       <main className="border w-max mx-auto mt-12 flex flex-col items-center">
-        <h1 className="text-blue-600 text-xl">N-Back task</h1>
+        <h1 className="text-blue-600 text-xl">Welcome, {username}</h1>
 
         <h2 className="text-xl mt-4">
           Click yes if this letter was same as 2 letters ago:

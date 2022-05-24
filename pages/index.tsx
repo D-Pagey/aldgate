@@ -2,9 +2,12 @@ import { FormEvent, SyntheticEvent, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useAppContext } from "../contexts";
 
 const Home: NextPage = () => {
   const [name, setName] = useState("");
+
+  const { setUsername } = useAppContext();
 
   const router = useRouter();
 
@@ -15,6 +18,7 @@ const Home: NextPage = () => {
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
 
+    setUsername(name);
     // set name in global state
     router.push("/game");
   };

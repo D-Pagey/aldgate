@@ -1,50 +1,22 @@
-import { useState, useEffect } from "react";
+import { FormEvent, SyntheticEvent, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import useInterval from "../hooks/useInterval";
-
-// TODO: move from here to api response
-const testString = "AHGFGAHGFGAHGFG";
-
 const Home: NextPage = () => {
-  const [letterIndex, setLetterIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [correctTally, setCorrectTally] = useState(0);
-  const [incorrectTally, setIncorrectTally] = useState(0);
+  const [name, setName] = useState("");
 
   const router = useRouter();
 
-  useInterval(
-    () => {
-      setLetterIndex(letterIndex + 1);
-    },
-    isPaused ? null : 2000
-  );
+  const handleNameChange = (event: FormEvent<HTMLInputElement>) => {
+    setName(event.currentTarget.value);
+  };
 
-  useEffect(() => {
-    if (incorrectTally >= 2 || letterIndex === testString.length - 1) {
-      router.push("/results");
-    }
-  }, [incorrectTally, letterIndex, router]);
+  const handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
 
-  const handleClick = () => {
-    const currentLetter = testString[letterIndex];
-    const comparisonLetter = testString[letterIndex - 2];
-
-    // pause interval
-    setIsPaused(true);
-
-    // check if you're right
-    if (currentLetter === comparisonLetter) {
-      setCorrectTally(correctTally + 1);
-    } else {
-      setIncorrectTally(incorrectTally + 1);
-    }
-
-    // unpause
-    setIsPaused(false);
+    // set name in global state
+    router.push("/game");
   };
 
   return (
@@ -55,22 +27,25 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="border w-max mx-auto mt-12 flex flex-col items-center">
-        <h1 className="text-blue-600 text-xl">N-Back task</h1>
+      <main className="w-max mx-auto mt-12 flex flex-col items-center">
+        <h1 className="text-blue-600 text-xl">Project Aldgate</h1>
 
-        <h2 className="text-xl mt-4">
-          Click yes if this letter was same as 2 letters ago:
-        </h2>
+        <form onSubmit={handleSubmit}>
+          <label className="flex flex-col gap-2 mt-4">
+            Please enter your name
+            <input
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              className="text-lg border rounded p-2"
+              required
+            />
+          </label>
 
-        <p className="text-5xl mt-4 text-center">{testString[letterIndex]}</p>
-
-        <button
-          type="button"
-          className="bg-orange-500 p-4 text-lg rounded"
-          onClick={handleClick}
-        >
-          CLICK
-        </button>
+          <button type="submit" className="bg-green-500 p-4 rounded mt-4">
+            START
+          </button>
+        </form>
       </main>
     </div>
   );

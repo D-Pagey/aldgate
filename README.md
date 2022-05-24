@@ -41,3 +41,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Abstract Head to layout component
 - [ ] Use context for sharing state across pages
 - [ ] Handling no data in results page
+- [ ] Add welcome `user` to game screen
+- [ ] Check accessibility
+- [ ] Optional toggle to show analytics event toasts
+
+## Dev notes
+
+- some naming could be debatable, didnt spend too much time thinking about it
+- probably could seperate out user provider and game state provider but for this scope simple enough

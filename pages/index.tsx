@@ -1,17 +1,51 @@
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/router";
+
 import useInterval from "../hooks/useInterval";
 
-const testString = "AHGFG";
+// TODO: move from here to api response
+const testString = "AHGFGAHGFGAHGFG";
 
 const Home: NextPage = () => {
   const [letterIndex, setLetterIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [correctTally, setCorrectTally] = useState(0);
+  const [incorrectTally, setIncorrectTally] = useState(0);
 
-  useInterval(() => {
-    setLetterIndex(letterIndex + 1);
-  }, 2000);
+  const router = useRouter();
+
+  useInterval(
+    () => {
+      setLetterIndex(letterIndex + 1);
+    },
+    isPaused ? null : 2000
+  );
+
+  useEffect(() => {
+    if (incorrectTally >= 2 || letterIndex === testString.length - 1) {
+      router.push("/results");
+    }
+  }, [incorrectTally, letterIndex, router]);
+
+  const handleClick = () => {
+    const currentLetter = testString[letterIndex];
+    const comparisonLetter = testString[letterIndex - 2];
+
+    // pause interval
+    setIsPaused(true);
+
+    // check if you're right
+    if (currentLetter === comparisonLetter) {
+      setCorrectTally(correctTally + 1);
+    } else {
+      setIncorrectTally(incorrectTally + 1);
+    }
+
+    // unpause
+    setIsPaused(false);
+  };
 
   return (
     <div>
@@ -21,7 +55,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="border w-max mx-auto mt-12">
+      <main className="border w-max mx-auto mt-12 flex flex-col items-center">
         <h1 className="text-blue-600 text-xl">N-Back task</h1>
 
         <h2 className="text-xl mt-4">
@@ -29,6 +63,14 @@ const Home: NextPage = () => {
         </h2>
 
         <p className="text-5xl mt-4 text-center">{testString[letterIndex]}</p>
+
+        <button
+          type="button"
+          className="bg-orange-500 p-4 text-lg rounded"
+          onClick={handleClick}
+        >
+          CLICK
+        </button>
       </main>
     </div>
   );

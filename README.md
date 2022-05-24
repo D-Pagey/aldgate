@@ -34,3 +34,10 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 - [ ] Check semantic html `main`, `header`, `footer`
+- [ ] Add cypress E2E test
+- [ ] Mock API response from api route
+- [ ] Add analytics toast
+- [ ] use relevant colours (off-white background)
+- [ ] Abstract Head to layout component
+- [ ] Use context for sharing state across pages
+- [ ] Handling no data in results page

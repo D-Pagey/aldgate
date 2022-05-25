@@ -12,10 +12,14 @@ const testString = "AHGFGAHGFGAHGFG";
 const Game: NextPage = () => {
   const [letterIndex, setLetterIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [correctTally, setCorrectTally] = useState(0);
-  const [incorrectTally, setIncorrectTally] = useState(0);
 
-  const { username } = useAppContext();
+  const {
+    username,
+    setCorrectAnswers,
+    correctAnswers,
+    wrongAnswers,
+    setWrongAnswers,
+  } = useAppContext();
 
   const router = useRouter();
 
@@ -27,10 +31,10 @@ const Game: NextPage = () => {
   );
 
   useEffect(() => {
-    if (incorrectTally >= 2 || letterIndex === testString.length - 1) {
+    if (wrongAnswers >= 2 || letterIndex === testString.length - 1) {
       router.push("/results");
     }
-  }, [incorrectTally, letterIndex, router]);
+  }, [wrongAnswers, letterIndex, router]);
 
   const handleClick = () => {
     const currentLetter = testString[letterIndex];
@@ -41,9 +45,9 @@ const Game: NextPage = () => {
 
     // check if you're right
     if (currentLetter === comparisonLetter) {
-      setCorrectTally(correctTally + 1);
+      setCorrectAnswers(correctAnswers + 1);
     } else {
-      setIncorrectTally(incorrectTally + 1);
+      setWrongAnswers(wrongAnswers + 1);
     }
 
     // unpause

@@ -6,26 +6,54 @@ import {
   SetStateAction,
   useContext,
 } from "react";
+import { receiveMessageOnPort } from "worker_threads";
 
 export type ContextTypes = {
   username?: string;
   setUsername: Dispatch<SetStateAction<string | undefined>>;
+  correctAnswers: number;
+  setCorrectAnswers: Dispatch<SetStateAction<number>>;
+  wrongAnswers: number;
+  setWrongAnswers: Dispatch<SetStateAction<number>>;
+  resetGame: () => void;
 };
 
 const Context = createContext<ContextTypes>({
   username: undefined,
   setUsername: () => null,
+  correctAnswers: 0,
+  setCorrectAnswers: () => null,
+  wrongAnswers: 0,
+  setWrongAnswers: () => null,
+  resetGame: () => null,
 });
 
 type Props = {
-  children: any;
+  children: JSX.Element;
 };
 
 export const Provider: FC<Props> = ({ children }) => {
   const [username, setUsername] = useState<string>();
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState(0);
+
+  const resetGame = () => {
+    setCorrectAnswers(0);
+    setWrongAnswers(0);
+  };
 
   return (
-    <Context.Provider value={{ username, setUsername }}>
+    <Context.Provider
+      value={{
+        username,
+        setUsername,
+        correctAnswers,
+        setCorrectAnswers,
+        wrongAnswers,
+        setWrongAnswers,
+        resetGame,
+      }}
+    >
       {children}
     </Context.Provider>
   );

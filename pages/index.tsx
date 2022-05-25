@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { sentenceCase } from "change-case";
 
 import { useAppContext } from "../contexts";
+import { Toggle } from "../components/Toggle";
 
 const Home: NextPage = () => {
   const [name, setName] = useState("");
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 flex flex-col">
       <h1 className="text-purple text-xl">Game 1</h1>
 
       <p className="mt-2">
@@ -53,6 +54,10 @@ const Home: NextPage = () => {
           START
         </button>
       </form>
+
+      <div className="self-end mt-12">
+        <Toggle />
+      </div>
     </div>
   );
 };

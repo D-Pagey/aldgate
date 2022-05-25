@@ -15,6 +15,8 @@ export type ContextTypes = {
   setCorrectAnswers: Dispatch<SetStateAction<number>>;
   wrongAnswers: number;
   setWrongAnswers: Dispatch<SetStateAction<number>>;
+  showAnalyticsEvents: boolean;
+  setShowAnalyicsEvents: Dispatch<SetStateAction<boolean>>;
   resetGame: () => void;
 };
 
@@ -26,6 +28,8 @@ const Context = createContext<ContextTypes>({
   wrongAnswers: 0,
   setWrongAnswers: () => null,
   resetGame: () => null,
+  showAnalyticsEvents: false,
+  setShowAnalyicsEvents: () => null,
 });
 
 type Props = {
@@ -36,6 +40,7 @@ export const Provider: FC<Props> = ({ children }) => {
   const [username, setUsername] = useState<string>();
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [showAnalyticsEvents, setShowAnalyicsEvents] = useState(false);
 
   const resetGame = () => {
     setCorrectAnswers(0);
@@ -52,6 +57,8 @@ export const Provider: FC<Props> = ({ children }) => {
         wrongAnswers,
         setWrongAnswers,
         resetGame,
+        showAnalyticsEvents,
+        setShowAnalyicsEvents,
       }}
     >
       {children}

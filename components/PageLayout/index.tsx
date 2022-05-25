@@ -16,13 +16,13 @@ export const PageLayout: FC<Props> = ({ children }) => (
     </Head>
 
     {/* for toast notifications - mainly used to demo analytics in this case */}
-    <Toaster />
+    <Toaster position="top-right" />
 
-    <nav className="p-4 md:px-10 shadow flex w-full">
+    <header className="p-4 md:px-10 shadow flex w-full">
       <Link href="/">
         <a className="text-purple text-2xl">Aldgate</a>
       </Link>
-    </nav>
+    </header>
 
     <main
       className="flex flex-col w-full p-4 lg:px-0"

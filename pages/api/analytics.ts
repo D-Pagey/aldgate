@@ -2,14 +2,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
-  name: string;
+  success: string;
 };
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log(req);
-
-  res.status(200).json({ name: "John Doe" });
+  res.status(200).json({ success: `${req.body.eventName} event recorded` });
 }

@@ -1,13 +1,17 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useAppContext } from "../contexts";
+import { sendAnalyticsEvent } from "../utilities";
 
 const Results: NextPage = () => {
-  const { correctAnswers, wrongAnswers, resetGame } = useAppContext();
+  const { correctAnswers, wrongAnswers, resetGame, showAnalyticsEvents } =
+    useAppContext();
   const router = useRouter();
 
   const handleRetry = () => {
     resetGame();
+
+    sendAnalyticsEvent(showAnalyticsEvents, "clicked_restart_game");
     router.push("/game");
   };
 

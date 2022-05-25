@@ -33,23 +33,25 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-- [ ] Check semantic html `main`, `header`, `footer`
+- [ ] Handle reaction for answering question
+- [ ] Mock API response from api route for test string
+- [ ] use SWR
 - [ ] Add cypress E2E test
-- [ ] Mock API response from api route
-- [ ] Add analytics toast
-- [ ] use relevant colours (off-white background)
-- [ ] Abstract Head to layout component
-- [ ] Use context for sharing state across pages
-- [ ] Handling no data in results page
-- [ ] Add welcome `user` to game screen
+- [ ] Redirect if no user
+- [ ] Show remaining errors
+- [ ] Show progress bar time left
+- [ ] Add date to analytics event
+
+### QA
+
 - [ ] Check accessibility
-- [ ] Optional toggle to show analytics event toasts
-- [ ] Add analytics api route
-- [ ] Add react hot toast for analytics events
-- [ ] add space bar event
+- [ ] add integration tests
+- [ ] Check deployed versioxn for responsiveness
+- [ ] Amend copy
 
 ## Dev notes
 
 - some naming could be debatable, didnt spend too much time thinking about it
 - probably could seperate out user provider and game state provider but for this scope simple enough
 - simplified some structure for sake of scope of project
+- more time would prevent double click on same letter

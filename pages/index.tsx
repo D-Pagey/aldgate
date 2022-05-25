@@ -5,11 +5,12 @@ import { sentenceCase } from "change-case";
 
 import { useAppContext } from "../contexts";
 import { Toggle } from "../components/Toggle";
+import { sendAnalyticsEvent } from "../utilities";
 
 const Home: NextPage = () => {
   const [name, setName] = useState("");
 
-  const { setUsername } = useAppContext();
+  const { setUsername, showAnalyticsEvents } = useAppContext();
 
   const router = useRouter();
 
@@ -19,9 +20,11 @@ const Home: NextPage = () => {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-
-    setUsername(sentenceCase(name));
     // set name in global state
+    setUsername(sentenceCase(name));
+
+    sendAnalyticsEvent(showAnalyticsEvents, "started_game");
+
     router.push("/game");
   };
 
@@ -49,7 +52,7 @@ const Home: NextPage = () => {
 
         <button
           type="submit"
-          className="bg-green-500 py-4 px-6 rounded mt-4 self-end"
+          className="bg-green-400 hover:bg-green-500 py-4 px-6 rounded mt-4 self-end"
         >
           START
         </button>

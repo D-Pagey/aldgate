@@ -45,6 +45,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Check accessibility
 - [ ] Optional toggle to show analytics event toasts
 - [ ] Add analytics api route
+- [ ] Add react hot toast for analytics events
 - [ ] add space bar event
 
 ## Dev notes

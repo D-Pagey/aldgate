@@ -20,3 +20,4 @@ I would have liked to spend more time on this but my time was limited. Here are 
 - add a timer for each letter
 - feedback in the UI positive/negative answers other than the error count increasing
 - prevent double click on same letter
+- add more test coverage

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page should render 1`] = `
+<div
+  class="mt-10 flex flex-col"
+>
+  <h1
+    class="text-purple text-xl"
+  >
+    Game 1
+  </h1>
+  <p
+    class="mt-2"
+  >
+    This is a small memory game. You will be shown a series of letters one after the other. If the current letter you are seeing, is the same as the one you saw
+     
+    <span
+      class="text-purple font-semibold"
+    >
+      2 letters
+    </span>
+     ago then click the button.
+  </p>
+  <p
+    class="my-2"
+  >
+    The game will end either at the end of the sequence or after 2 incorrect answers.
+  </p>
+  <form
+    class="flex flex-col"
+  >
+    <label
+      class="flex flex-col gap-2 mt-4 text-purple"
+    >
+      Please enter your name
+      <input
+        class="text-lg border rounded p-2 text-black"
+        placeholder="Enter name here..."
+        required=""
+        type="text"
+        value=""
+      />
+    </label>
+    <button
+      class="bg-green-400 hover:bg-green-500 py-4 px-6 rounded mt-4 self-end"
+      type="submit"
+    >
+      START
+    </button>
+  </form>
+  <div
+    class="self-end mt-12"
+  >
+    <div
+      class="flex items-center"
+    >
+      <label
+        class="mr-4"
+        id="headlessui-label-:r0:"
+      >
+        Show analytics events
+      </label>
+      <button
+        aria-checked="false"
+        aria-labelledby="headlessui-label-:r0:"
+        class="bg-blue-200 relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        id="headlessui-switch-:r1:"
+        role="switch"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="translate-x-1 inline-block w-4 h-4 transform bg-white rounded-full transition-transform"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

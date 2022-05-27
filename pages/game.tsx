@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import { useInterval, useGame } from "../hooks";
 import { useAppContext } from "../contexts";
+import { sendAnalyticsEvent } from "../utilities";
 
 const Game: NextPage = () => {
   const [letterIndex, setLetterIndex] = useState(0);
@@ -16,6 +17,7 @@ const Game: NextPage = () => {
     correctAnswers,
     wrongAnswers,
     setWrongAnswers,
+    showAnalyticsEvents,
   } = useAppContext();
 
   const router = useRouter();
@@ -49,6 +51,10 @@ const Game: NextPage = () => {
       } else {
         setWrongAnswers(wrongAnswers + 1);
       }
+
+      // with more time I would include other data like correct vs wrong
+      // maybe even which letter they clicked it on and the total string
+      sendAnalyticsEvent(showAnalyticsEvents, "attempt_logged");
 
       // unpause
       setIsPaused(false);

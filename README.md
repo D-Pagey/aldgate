@@ -11,11 +11,12 @@ Alternatively, you can clone this repo and run the following scripts:
 
 ## Notes
 
-I would have liked to spend more time on this but my time was limited. Here are some considerations:
+I would have liked to spend more time on this but my time was limited. Here are some considerations and things I would have liked to do with more time:
 
-- with more time I would have liked to implement a Cypress end-to-end test
-- I could have added a redirect on the `/game` and `/results` pages if no user present i.e. you just landed on the url
-- I would have liked to had cooler UI for the loading and error states
-- The UX of the game is a bit suboptimal, would be nice to have a timer for each letter.
-- Also would have been good to show in the UI positive/negative answers other than the error count increasing
-- I would like to prevent double click on same letter
+- implement a break between each letter
+- implement a Cypress end-to-end test
+- add a redirect on the `/game` and `/results` pages if no there's no user present i.e. you just landed on the url
+- implement a cooler UI for the loading and error states
+- add a timer for each letter
+- feedback in the UI positive/negative answers other than the error count increasing
+- prevent double click on same letter

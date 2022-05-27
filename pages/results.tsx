@@ -16,18 +16,20 @@ const Results: NextPage = () => {
   };
 
   return (
-    <div className="border mt-12 flex flex-col items-center">
-      <h1 className="text-purple text-xl">Results Yo</h1>
+    <div className="mt-12 flex flex-col">
+      <h1 className="text-purple text-2xl mb-2">Game Results</h1>
 
-      <p>
-        Correct answers: <span>{correctAnswers}</span>
+      <p className="text-xl">
+        <span className="font-semibold">Correct answers:</span>{" "}
+        <span>{correctAnswers}</span>
       </p>
-      <p>
-        Wrong answers: <span>{wrongAnswers}</span>
+      <p className="text-xl">
+        <span className="font-semibold">Wrong answers:</span>{" "}
+        <span>{wrongAnswers}</span>
       </p>
 
       <button
-        className="bg-blue-500 p-4 rounded hover:bg-blue-600"
+        className="bg-orange p-4 rounded self-end mt-4"
         onClick={handleRetry}
       >
         Try again

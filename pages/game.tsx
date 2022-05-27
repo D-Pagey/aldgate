@@ -64,20 +64,22 @@ const Game: NextPage = () => {
   }
 
   return (
-    <div className="mt-10 flex flex-col items-center">
-      <h1 className="text-purple text-xl">Welcome, {username}</h1>
+    <div className="mt-10 flex flex-col">
+      <h1 className="text-purple text-2xl">Welcome, {username}</h1>
 
-      <h2 className="text-xl mt-4">
-        Click yes if this letter was same as 2 letters ago:
-      </h2>
+      <p>You have {2 - wrongAnswers}/2 chances left</p>
 
       <p className="text-5xl mt-4 text-center">
         {data?.gameString[letterIndex]}
       </p>
 
+      <h2 className="mt-4 self-start">
+        Click yes if this letter was same as 2 letters ago:
+      </h2>
+
       <button
         type="button"
-        className="bg-orange-500 hover:bg-orange-600 p-4 text-lg rounded"
+        className="p-4 text-lg rounded border bg-orange mt-4"
         onClick={handleClick}
       >
         CLICK

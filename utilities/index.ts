@@ -6,7 +6,10 @@ export const sendAnalyticsEvent = async (
   eventName: string
 ) => {
   try {
-    const { data } = await axios.post(`api/analytics`, { eventName });
+    const { data } = await axios.post(`api/analytics`, {
+      eventName,
+      date: new Date(),
+    });
 
     if (showEventResponse) toast.success(data.success);
   } catch {

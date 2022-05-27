@@ -1,16 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 
-import useInterval from "../hooks/useInterval";
+import { useInterval, useGame } from "../hooks";
 import { useAppContext } from "../contexts";
-
-// TODO: move from here to api response
-const testString = "AHGFGAHGFGAHGFG";
 
 const Game: NextPage = () => {
   const [letterIndex, setLetterIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const { data, isLoading, isError } = useGame();
 
   const {
     username,
@@ -30,28 +28,40 @@ const Game: NextPage = () => {
   );
 
   useEffect(() => {
-    if (wrongAnswers >= 2 || letterIndex === testString.length - 1) {
-      router.push("/results");
+    if (data) {
+      if (wrongAnswers >= 2 || letterIndex === data.gameString.length - 1) {
+        router.push("/results");
+      }
     }
-  }, [wrongAnswers, letterIndex, router]);
+  }, [wrongAnswers, letterIndex, router, data]);
 
   const handleClick = () => {
-    const currentLetter = testString[letterIndex];
-    const comparisonLetter = testString[letterIndex - 2];
+    if (data) {
+      const currentLetter = data.gameString[letterIndex];
+      const comparisonLetter = data.gameString[letterIndex - 2];
 
-    // pause interval
-    setIsPaused(true);
+      // pause interval
+      setIsPaused(true);
 
-    // check if you're right
-    if (currentLetter === comparisonLetter) {
-      setCorrectAnswers(correctAnswers + 1);
-    } else {
-      setWrongAnswers(wrongAnswers + 1);
+      // check if you're right
+      if (currentLetter === comparisonLetter) {
+        setCorrectAnswers(correctAnswers + 1);
+      } else {
+        setWrongAnswers(wrongAnswers + 1);
+      }
+
+      // unpause
+      setIsPaused(false);
     }
-
-    // unpause
-    setIsPaused(false);
   };
+
+  if (isError) {
+    return <p>There was an error fetching the game data</p>;
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="mt-10 flex flex-col items-center">
@@ -61,7 +71,9 @@ const Game: NextPage = () => {
         Click yes if this letter was same as 2 letters ago:
       </h2>
 
-      <p className="text-5xl mt-4 text-center">{testString[letterIndex]}</p>
+      <p className="text-5xl mt-4 text-center">
+        {data?.gameString[letterIndex]}
+      </p>
 
       <button
         type="button"

@@ -55,3 +55,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - probably could seperate out user provider and game state provider but for this scope simple enough
 - simplified some structure for sake of scope of project
 - more time would prevent double click on same letter
+- explain whole stack choices
+- ran out of time - woudl do a cooler error and loading state

@@ -74,7 +74,7 @@ const Game: NextPage = () => {
       </p>
 
       <h2 className="mt-4 self-start">
-        Click yes if this letter was same as 2 letters ago:
+        Click below if this letter was same as 2 letters ago:
       </h2>
 
       <button

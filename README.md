@@ -13,6 +13,7 @@ Alternatively, you can clone this repo and run the following scripts:
 
 I would have liked to spend more time on this but my time was limited. Here are some considerations and things I would have liked to do with more time:
 
+- I forgot to account for if the user misses a correct answer
 - implement a break between each letter
 - implement a Cypress end-to-end test
 - add a redirect on the `/game` and `/results` pages if no there's no user present i.e. you just landed on the url

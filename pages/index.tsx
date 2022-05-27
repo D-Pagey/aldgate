@@ -33,8 +33,16 @@ const Home: NextPage = () => {
       <h1 className="text-purple text-xl">Game 1</h1>
 
       <p className="mt-2">
-        This is a small memory exercise. You need to remember if the current
-        letter matches the letter from 2 ago....TODO FIX EXPLANATION
+        This is a small memory game. You will be shown a series of letters one
+        after the other. If the current letter you are seeing, is the same as
+        the one you saw{" "}
+        <span className="text-purple font-semibold">2 letters</span> ago then
+        click the button.
+      </p>
+
+      <p className="my-2">
+        The game will end either at the end of the sequence or after 2 incorrect
+        answers.
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col">

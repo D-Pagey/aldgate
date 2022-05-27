@@ -79,10 +79,10 @@ const Game: NextPage = () => {
 
       <button
         type="button"
-        className="p-4 text-lg rounded border bg-orange mt-4"
+        className="p-4 text-lg rounded border bg-orange mt-4 uppercase"
         onClick={handleClick}
       >
-        CLICK
+        click
       </button>
     </div>
   );
